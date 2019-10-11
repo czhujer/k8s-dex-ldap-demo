@@ -5,7 +5,7 @@ metadata:
   namespace: auth
 data:
   config.yaml: |
-    issuer: https://dex.k8s.example.org/dex
+    issuer: https://dex.k8s.ipademo.local:32000/dex
     storage:
       type: kubernetes
       config:
@@ -29,7 +29,7 @@ data:
           # If the port is not supplied, it will be guessed based on "insecureNoSSL",
           # and "startTLS" flags. 389 for insecure or StartTLS connections, 636
           # otherwise.
-          host: ldap.k8s.example.org:389
+          host: server.ipademo.local:389
 
           # Following field is required if the LDAP host is not using TLS (port 389).
           # Because this option inherently leaks passwords to anyone on the same network
@@ -95,6 +95,6 @@ data:
     staticClients:
     - id: loginapp
       redirectURIs:
-      - 'https://login.k8s.example.org:32002/callback'
-      name: 'Login Application'
-      secret: 4TORGiNV9M54BTk1v7dNuFSaI6hUjfjr
+      - 'https://login.k8s.ipademo.local:32002/callback'
+      name: 'Login Application IPAdemo'
+      secret: 4TORGiNV9M54BTk1v7dNuFSaI6hUjfjrdwd4343

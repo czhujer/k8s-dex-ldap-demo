@@ -1,18 +1,29 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: loginapp
   namespace: auth
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: loginapp
   template:
     metadata:
       labels:
         app: loginapp
     spec:
+      hostAliases:
+        - ip: "172.18.18.11"
+          hostnames:
+            - "dex.k8s.ipademo.local"
       containers:
       - image: objectiflibre/login-app:latest
         name: loginapp
+#        command:
+#          - sleep
+#        args:
+#          - "86400"
         ports:
         - name: http
           containerPort: 5555
@@ -38,4 +49,4 @@ spec:
             path: config.yaml
       - name: tls
         secret:
-          secretName: login.k8s.example.org.tls
+          secretName: login.k8s.ipademo.local.tls

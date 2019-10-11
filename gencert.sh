@@ -15,8 +15,8 @@ keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = dex.k8s.example.org
-DNS.2 = login.k8s.example.org
+DNS.1 = dex.k8s.ipademo.local
+DNS.2 = login.k8s.ipademo.local
 EOF
 
 openssl genrsa -out ssl/ca-key.pem 2048

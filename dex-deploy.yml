@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -7,6 +7,9 @@ metadata:
   namespace: auth
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: dex
   template:
     metadata:
       labels:
@@ -34,4 +37,4 @@ spec:
             path: config.yaml
       - name: tls
         secret:
-          secretName: dex.k8s.example.org.tls
+          secretName: dex.k8s.ipademo.local.tls
